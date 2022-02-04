@@ -4,17 +4,22 @@
  */
 package basicvideogames;
 
+import hangman.Hangman;
+
 /**
  *
  * @author casa
  */
 public class MainGames {
 
-    /**
-     * @param args the command line arguments
-     */
+
     public static void main(String[] args) {
-        // TODO code application logic here
+        
+        IGame hangman=new Hangman();
+        hangman.game();
+        
+        
+        
     }
     
 }
