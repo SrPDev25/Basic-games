@@ -2,6 +2,7 @@ package hangman;
 
 import basicvideogames.IGame;
 import inputs.EntradaTextos;
+import java.util.Arrays;
 
 /**
  *
@@ -21,16 +22,34 @@ public class Hangman implements IGame {
      * Start the game
      */
     public void game() {
-        boolean inGame;
         while (consoleOutput.mainMenu()) {
             askWord();
-            clearProgress();
-            inGame = true;
-            while (inGame) {
+            clear();
+            while (!inGame()) {
                 printProgress();
                 askLetter();
             }
         }
+    }
+
+    private boolean inGame() {
+        boolean Finished = false;
+//        for (int i = 0; i < this.progress.length; i++) {
+//            if (this.progress[i].equals(" ")) {
+//                unFinished =
+//            }
+//
+//        }
+        
+        if (fails >3 ){
+            Finished = true;
+            System.out.println("LOSE");
+        }
+        if ((!Arrays.asList(progress).contains(" "))) {
+            Finished = true;
+            System.out.println("WIN");
+        } 
+        return Finished;
     }
 
     /**
@@ -41,11 +60,12 @@ public class Hangman implements IGame {
         tries = "";
     }
 
-    private void clearProgress() {
+    private void clear() {
         progress = new String[word.length];
         for (int i = 0; i < word.length; i++) {
             progress[i] = " ";
         }
+        this.fails=0;
     }
 
     /**
@@ -72,11 +92,11 @@ public class Hangman implements IGame {
     private boolean checkTry(String character) {//USAR EL FOREACH
         boolean tried = false;
         if (this.tries.length() > 0) {
-            String[] triesArr=tries.split("");
+            String[] triesArr = tries.split("");
             int pos = 0;
-            while(pos<triesArr.length){
-                if(triesArr[pos].equalsIgnoreCase(character)){
-                    tried=true;
+            while (pos < triesArr.length) {
+                if (triesArr[pos].equalsIgnoreCase(character)) {
+                    tried = true;
                     break;
                 }
                 pos++;
@@ -84,8 +104,7 @@ public class Hangman implements IGame {
         }
         return tried;
     }
-    
-    
+
     private void printProgress() {//USAR EL FOREACH
         String pProgress = "";
         String lines = "";
