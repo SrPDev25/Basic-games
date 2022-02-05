@@ -11,7 +11,7 @@ import java.util.Arrays;
 public class Hangman implements IGame {
 
     private String[] word; //BUSCAR PASAR A CHAR
-    private String[] progress;
+    protected String[] progress;
     private String tries;
     private int fails;
 
@@ -26,7 +26,8 @@ public class Hangman implements IGame {
             askWord();
             clear();
             while (!inGame()) {
-                printProgress();
+                consoleOutput.handMan(this.fails);
+                consoleOutput.printProgress(this.progress,tries);
                 askLetter();
             }
         }
@@ -36,11 +37,12 @@ public class Hangman implements IGame {
         boolean Finished = false;
         if (fails > 3) {
             Finished = true;
-            System.out.println("LOSE");
+            consoleOutput.handMan(3);
+            System.out.println("YOU LOSE");
         }
         if ((!Arrays.asList(progress).contains(" "))) {
             Finished = true;
-            System.out.println("WIN");
+            System.out.println("YOU WIN");
         }
         return Finished;
     }
@@ -115,16 +117,7 @@ public class Hangman implements IGame {
         return tried;
     }
 
-    private void printProgress() {
-        String pProgress = "";
-        String lines = "";
-        for (int i = 0; i < progress.length; i++) {
-            pProgress = pProgress + progress[i];
-            lines = lines + "-";
-        }
-        System.out.println(pProgress + "\n"
-                + lines);
-    }
+    
 
     /**
      * Check if the letter is correct
