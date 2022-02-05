@@ -10,7 +10,7 @@ import inputs.EntradaNumeros;
  *
  * @author casa
  */
-public class Interface {
+public class consoleOutput {
 
     static boolean mainMenu() {
         boolean start=true;

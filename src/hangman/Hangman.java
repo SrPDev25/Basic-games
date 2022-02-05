@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package hangman;
 
 import basicvideogames.IGame;
@@ -11,13 +8,12 @@ import inputs.EntradaTextos;
  *
  * @author casa
  */
-public class Hangman implements IGame{
+public class Hangman implements IGame {
 
-    private String[] word; //BUSCAR PASAR A CHAR
-    private String[] progress; 
+    private String word; //BUSCAR PASAR A CHAR
+    private String[] progress;
     private String tries;
-    private int fails; 
-    private boolean inGame;
+    private int fails;
 
     public Hangman() {
     }
@@ -26,15 +22,15 @@ public class Hangman implements IGame{
      * Start the game
      */
     public void game() {
-        while (!Interface.mainMenu()) {
+        boolean inGame;
+        while (consoleOutput.mainMenu()) {
             askWord();
-            resetProgress();
-        }
-        this.inGame = true;
-        resetProgress();
-        while (inGame) {
-            printProgress();
-            askLetter();
+            clearProgress();
+            inGame = true;
+            while (inGame) {
+                printProgress();
+                askLetter();
+            }
         }
     }
 
@@ -42,13 +38,12 @@ public class Hangman implements IGame{
      * ask for a word
      */
     private void askWord() {
-        String[] inputWord;
-        inputWord = (EntradaTextos.inputString("Palabra de esta partida: ")).split("");
+        this.word= (EntradaTextos.inputString("Palabra de esta partida: "));
     }
-    
-    private void resetProgress() {
-        progress = new String[word.length];
-        for (int i = 0; i < word.length; i++) {
+
+    private void clearProgress() {
+        progress = new String[word.length()];
+        for (int i = 0; i < word.length(); i++) {
             progress[i] = " ";
         }
     }
@@ -92,7 +87,7 @@ public class Hangman implements IGame{
         while (!character.equalsIgnoreCase(check[pos])) {
             exist = false;
             pos++;
-            
+
         }
         return exist;
     }
@@ -104,8 +99,8 @@ public class Hangman implements IGame{
      */
     private void checkLetter(String character) {//USAR EL FOREACH //USAR INDEX OF
         boolean fail = true;
-        for (int i = 0; i < word.length; i++) {
-            if (character.equals(word[i])) {
+        for (int i = 0; i < word.length(); i++) {
+            if (character.equals(word.charAt(i))) {
                 progress[i] = character;
                 fail = false;
             }
@@ -122,7 +117,5 @@ public class Hangman implements IGame{
         }
         return chain;
     }
-
-    
 
 }
