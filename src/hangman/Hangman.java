@@ -34,21 +34,14 @@ public class Hangman implements IGame {
 
     private boolean inGame() {
         boolean Finished = false;
-//        for (int i = 0; i < this.progress.length; i++) {
-//            if (this.progress[i].equals(" ")) {
-//                unFinished =
-//            }
-//
-//        }
-        
-        if (fails >3 ){
+        if (fails > 3) {
             Finished = true;
             System.out.println("LOSE");
         }
         if ((!Arrays.asList(progress).contains(" "))) {
             Finished = true;
             System.out.println("WIN");
-        } 
+        }
         return Finished;
     }
 
@@ -57,15 +50,32 @@ public class Hangman implements IGame {
      */
     private void askWord() {
         this.word = (EntradaTextos.inputString("Palabra de esta partida: ").split(""));
+        while (!checkForOnlyLetters(word)) {
+            this.word = (EntradaTextos.inputString("Palabra de esta partida: ").split(""));
+        }
         tries = "";
     }
 
+    private boolean checkForOnlyLetters(String[] word) {
+        boolean onlyLetters = true;
+        for (String c : word) {
+            if (!Character.isLetter(c.charAt(0))) {
+                onlyLetters = false;
+                break;
+            }
+        }
+        return onlyLetters;
+    }
+
+    /**
+     * clean progress and fails
+     */
     private void clear() {
         progress = new String[word.length];
         for (int i = 0; i < word.length; i++) {
             progress[i] = " ";
         }
-        this.fails=0;
+        this.fails = 0;
     }
 
     /**
@@ -105,7 +115,7 @@ public class Hangman implements IGame {
         return tried;
     }
 
-    private void printProgress() {//USAR EL FOREACH
+    private void printProgress() {
         String pProgress = "";
         String lines = "";
         for (int i = 0; i < progress.length; i++) {
@@ -124,7 +134,7 @@ public class Hangman implements IGame {
     private void checkLetter(String character) {//USAR EL FOREACH //USAR INDEX OF
         boolean fail = true;
         for (int i = 0; i < this.word.length; i++) {
-            if (character.equals(this.word[i])) {
+            if (character.equalsIgnoreCase(this.word[i])) {
                 progress[i] = character;
                 fail = false;
             }
@@ -136,8 +146,8 @@ public class Hangman implements IGame {
 
     public String getProgress() { //USAR EL FOREACH
         String chain = "";
-        for (int i = 0; i < progress.length; i++) {
-            chain = (chain + progress[i]);
+        for (String c : progress) {
+            chain = chain + c;
         }
         return chain;
     }

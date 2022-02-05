@@ -14,7 +14,7 @@ public class consoleOutput {
 
     static boolean mainMenu() {
         boolean start=true;
-        System.out.println("\tHANDMAN THE GAME\n"
+        System.out.println("\nHANDMAN THE GAME\n"
                 + "----------------------\n"
                 + "1.Start game\t2.Exit");
         if((EntradaNumeros.numIntBetween("", 1, 2))!=1){
