@@ -87,7 +87,8 @@ public class Hangman implements IGame {
         String letter;
         String[] checkTry = tries.split("");
         letter = EntradaTextos.inputStringChar("Letra: ");
-        while (checkTry(letter)) {
+        while (checkTry(letter) || !(Character.isLetter(letter.charAt(0)))) {
+            System.out.println("Not valid character");
             letter = EntradaTextos.inputStringChar("Letra: ");
         }
         checkLetter(letter);
