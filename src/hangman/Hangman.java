@@ -127,7 +127,6 @@ public class Hangman implements IGame {
             if (character.equals(this.word[i])) {
                 progress[i] = character;
                 fail = false;
-                break;
             }
         }
         if (fail) {
