@@ -4,6 +4,8 @@
  */
 package View;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author satan
@@ -12,8 +14,8 @@ public class WinGame extends javax.swing.JFrame {
 
     String[] gamers;//Gamers 1 and 2
     int[][] game; //The real game
-    int activeGamer;
-    boolean gameActive;
+    int activeGamer; //A que jugador le toca empezar
+    boolean gameActive;//Juego en curso
 
     public WinGame() {
         initComponents();
@@ -55,7 +57,10 @@ public class WinGame extends javax.swing.JFrame {
             win=true;
         }
         
-       
+        if (win) {
+            gameActive=false;
+            JOptionPane.showMessageDialog(this, "Winner is "+gamers[activeGamer], "Win", JOptionPane.INFORMATION_MESSAGE);
+        }
     }
 
     @SuppressWarnings("unchecked")
@@ -80,18 +85,33 @@ public class WinGame extends javax.swing.JFrame {
         txt23.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txt23.setMinimumSize(new java.awt.Dimension(60, 60));
         txt23.setPreferredSize(new java.awt.Dimension(60, 60));
+        txt23.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txt23MouseClicked(evt);
+            }
+        });
 
         txt22.setEditable(false);
         txt22.setFont(new java.awt.Font("Segoe UI", 1, 55)); // NOI18N
         txt22.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txt22.setMinimumSize(new java.awt.Dimension(60, 60));
         txt22.setPreferredSize(new java.awt.Dimension(60, 60));
+        txt22.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txt22MouseClicked(evt);
+            }
+        });
 
         txt13.setEditable(false);
         txt13.setFont(new java.awt.Font("Segoe UI", 1, 55)); // NOI18N
         txt13.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txt13.setMinimumSize(new java.awt.Dimension(60, 60));
         txt13.setPreferredSize(new java.awt.Dimension(60, 60));
+        txt13.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txt13MouseClicked(evt);
+            }
+        });
         txt13.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt13ActionPerformed(evt);
@@ -103,12 +123,22 @@ public class WinGame extends javax.swing.JFrame {
         txt32.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txt32.setMinimumSize(new java.awt.Dimension(60, 60));
         txt32.setPreferredSize(new java.awt.Dimension(60, 60));
+        txt32.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txt32MouseClicked(evt);
+            }
+        });
 
         txt12.setEditable(false);
         txt12.setFont(new java.awt.Font("Segoe UI", 1, 55)); // NOI18N
         txt12.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txt12.setMinimumSize(new java.awt.Dimension(60, 60));
         txt12.setPreferredSize(new java.awt.Dimension(60, 60));
+        txt12.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txt12MouseClicked(evt);
+            }
+        });
         txt12.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt12ActionPerformed(evt);
@@ -120,6 +150,11 @@ public class WinGame extends javax.swing.JFrame {
         txt11.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txt11.setMinimumSize(new java.awt.Dimension(60, 60));
         txt11.setPreferredSize(new java.awt.Dimension(60, 60));
+        txt11.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txt11MouseClicked(evt);
+            }
+        });
         txt11.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt11ActionPerformed(evt);
@@ -131,6 +166,11 @@ public class WinGame extends javax.swing.JFrame {
         txt21.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txt21.setMinimumSize(new java.awt.Dimension(60, 60));
         txt21.setPreferredSize(new java.awt.Dimension(60, 60));
+        txt21.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txt21MouseClicked(evt);
+            }
+        });
         txt21.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt21ActionPerformed(evt);
@@ -142,12 +182,22 @@ public class WinGame extends javax.swing.JFrame {
         txt33.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txt33.setMinimumSize(new java.awt.Dimension(60, 60));
         txt33.setPreferredSize(new java.awt.Dimension(60, 60));
+        txt33.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txt33MouseClicked(evt);
+            }
+        });
 
         txt31.setEditable(false);
         txt31.setFont(new java.awt.Font("Segoe UI", 1, 55)); // NOI18N
         txt31.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txt31.setMinimumSize(new java.awt.Dimension(60, 60));
         txt31.setPreferredSize(new java.awt.Dimension(60, 60));
+        txt31.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txt31MouseClicked(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
         jLabel2.setText("TIC TAC TOE");
@@ -189,10 +239,11 @@ public class WinGame extends javax.swing.JFrame {
                 .addGap(16, 16, 16)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txt13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txt23, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txt33, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txt23, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txt33, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txt22, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -210,30 +261,101 @@ public class WinGame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void txt13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt13ActionPerformed
-        if (gameActive && game[0][2]==3) {
-            game[0][2] = activeGamer;
-            chargeView();
-            changeTurn();
-        }
+        
     }//GEN-LAST:event_txt13ActionPerformed
 
     private void txt12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt12ActionPerformed
-        if (gameActive) {
-            game[0][1] = activeGamer;
-            changeTurn();
-        }
+        
     }//GEN-LAST:event_txt12ActionPerformed
 
     private void txt11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt11ActionPerformed
-        if (gameActive) {
-            game[0][0] = activeGamer;
-            changeTurn();
-        }
+        
     }//GEN-LAST:event_txt11ActionPerformed
 
     private void txt21ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt21ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txt21ActionPerformed
+
+    private void txt13MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt13MouseClicked
+        if (gameActive && game[0][2]==2) {
+            game[0][2] = activeGamer;
+            chargeView();
+            ifWin(0,2);
+            changeTurn();
+        }
+    }//GEN-LAST:event_txt13MouseClicked
+
+    private void txt12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt12MouseClicked
+        if (gameActive && game[0][1]==2) {
+            game[0][1] = activeGamer;
+            chargeView();
+            ifWin(0,1);
+            changeTurn();
+        }
+    }//GEN-LAST:event_txt12MouseClicked
+
+    private void txt11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt11MouseClicked
+        if (gameActive && game[0][0]==2) {
+            game[0][0] = activeGamer;
+            chargeView();
+            ifWin(0,0);
+            changeTurn();
+        }
+    }//GEN-LAST:event_txt11MouseClicked
+
+    private void txt23MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt23MouseClicked
+        if (gameActive && game[1][2]==2) {
+            game[1][2] = activeGamer;
+            chargeView();
+            ifWin(1,2);
+            changeTurn();
+        }
+    }//GEN-LAST:event_txt23MouseClicked
+
+    private void txt22MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt22MouseClicked
+        if (gameActive && game[1][1]==2) {
+            game[1][1] = activeGamer;
+            chargeView();
+            ifWin(1,1);
+            changeTurn();
+        }
+    }//GEN-LAST:event_txt22MouseClicked
+
+    private void txt21MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt21MouseClicked
+        if (gameActive && game[1][0]==2) {
+            game[1][0] = activeGamer;
+            chargeView();
+            ifWin(1,0);
+            changeTurn();
+        }
+    }//GEN-LAST:event_txt21MouseClicked
+
+    private void txt33MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt33MouseClicked
+        if (gameActive && game[2][2]==2) {
+            game[2][2] = activeGamer;
+            chargeView();
+            ifWin(2,2);
+            changeTurn();
+        }
+    }//GEN-LAST:event_txt33MouseClicked
+
+    private void txt32MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt32MouseClicked
+        if (gameActive && game[2][1]==2) {
+            game[2][1] = activeGamer;
+            chargeView();
+            ifWin(2,1);
+            changeTurn();
+        }
+    }//GEN-LAST:event_txt32MouseClicked
+
+    private void txt31MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt31MouseClicked
+        if (gameActive && game[2][0]==2) {
+            game[2][0] = activeGamer;
+            chargeView();
+            ifWin(2,0);
+            changeTurn();
+        }
+    }//GEN-LAST:event_txt31MouseClicked
 
     /**
      * Change turn

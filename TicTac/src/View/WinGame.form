@@ -66,10 +66,12 @@
               <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
               <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
               <EmptySpace pref="41" max="32767" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
+              <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="txt13" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="txt23" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txt33" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="txt23" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txt33" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -103,6 +105,9 @@
           <Dimension value="[60, 60]"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="txt23MouseClicked"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="txt22">
       <Properties>
@@ -118,6 +123,9 @@
           <Dimension value="[60, 60]"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="txt22MouseClicked"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="txt13">
       <Properties>
@@ -134,6 +142,7 @@
         </Property>
       </Properties>
       <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="txt13MouseClicked"/>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt13ActionPerformed"/>
       </Events>
     </Component>
@@ -151,6 +160,9 @@
           <Dimension value="[60, 60]"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="txt32MouseClicked"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="txt12">
       <Properties>
@@ -167,6 +179,7 @@
         </Property>
       </Properties>
       <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="txt12MouseClicked"/>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt12ActionPerformed"/>
       </Events>
     </Component>
@@ -185,6 +198,7 @@
         </Property>
       </Properties>
       <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="txt11MouseClicked"/>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt11ActionPerformed"/>
       </Events>
     </Component>
@@ -203,6 +217,7 @@
         </Property>
       </Properties>
       <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="txt21MouseClicked"/>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt21ActionPerformed"/>
       </Events>
     </Component>
@@ -220,6 +235,9 @@
           <Dimension value="[60, 60]"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="txt33MouseClicked"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="txt31">
       <Properties>
@@ -235,6 +253,9 @@
           <Dimension value="[60, 60]"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="txt31MouseClicked"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel2">
       <Properties>
