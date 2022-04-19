@@ -27,6 +27,7 @@ public class WinGame extends javax.swing.JFrame {
     }
 
     private void cleanGame() {
+        gameActive=true;
         //State 0=O 1=X 2=empty
         game = new int[][]{
             {2, 2, 2},
@@ -48,18 +49,22 @@ public class WinGame extends javax.swing.JFrame {
     }
 
     private void ifWin(int x, int y) {
-        boolean win=false;
-        if (game[x][0]==game[x][1] && game[x][1]==game[x][2]){
-            win=true;
+        boolean win = false;
+        if (game[x][0] == game[x][1] && game[x][1] == game[x][2]) {
+            win = true;
+        } else if (game[0][y] == game[1][y] && game[1][y] == game[2][y]) {
+            win = true;
+        } else if (game[1][1]!=2 && game[1][1] == game[0][0] && game[1][1] == game[2][2]){
+            win = true;
+        }else if (game[1][1]!=2 && game[1][1] == game[0][2] && game[1][1] == game[2][0]){
+            win = true;
         }
         
-        if (game[0][y]==game[1][y] && game[1][y]==game[2][y]){
-            win=true;
-        }
         
+
         if (win) {
-            gameActive=false;
-            JOptionPane.showMessageDialog(this, "Winner is "+gamers[activeGamer], "Win", JOptionPane.INFORMATION_MESSAGE);
+            gameActive = false;
+            JOptionPane.showMessageDialog(this, "Winner is " + gamers[activeGamer], "Win", JOptionPane.INFORMATION_MESSAGE);
         }
     }
 
@@ -77,6 +82,7 @@ public class WinGame extends javax.swing.JFrame {
         txt33 = new javax.swing.JTextField();
         txt31 = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -202,42 +208,52 @@ public class WinGame extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
         jLabel2.setText("TIC TAC TOE");
 
+        jButton1.setText("Reset");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(99, 99, 99)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(txt11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(99, 99, 99)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(txt11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txt13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txt12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txt23, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(txt23, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txt33, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(txt22, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txt32, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(txt21, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txt31, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(txt33, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(125, 125, 125)
-                        .addComponent(jLabel2)))
+                        .addComponent(txt22, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txt32, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(txt21, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txt31, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(109, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(125, 125, 125)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addGap(18, 18, 18))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(16, 16, 16)
-                .addComponent(jLabel2)
+                .addGap(13, 13, 13)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(jButton1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txt13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -261,101 +277,75 @@ public class WinGame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void txt13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt13ActionPerformed
-        
+
     }//GEN-LAST:event_txt13ActionPerformed
 
     private void txt12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt12ActionPerformed
-        
+
     }//GEN-LAST:event_txt12ActionPerformed
 
     private void txt11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt11ActionPerformed
-        
+
     }//GEN-LAST:event_txt11ActionPerformed
 
     private void txt21ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt21ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txt21ActionPerformed
-
-    private void txt13MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt13MouseClicked
-        if (gameActive && game[0][2]==2) {
-            game[0][2] = activeGamer;
+    /**
+     * Make the necessary changes at indicated txt
+     * @param x
+     * @param y 
+     */
+    private void wichSelected(int x, int y) {
+        if (gameActive && game[x][y] == 2) {
+            game[x][y] = activeGamer;
             chargeView();
-            ifWin(0,2);
+            ifWin(x, y);
             changeTurn();
         }
+    }
+    
+    private void txt13MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt13MouseClicked
+        wichSelected(0, 2);
     }//GEN-LAST:event_txt13MouseClicked
 
+
     private void txt12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt12MouseClicked
-        if (gameActive && game[0][1]==2) {
-            game[0][1] = activeGamer;
-            chargeView();
-            ifWin(0,1);
-            changeTurn();
-        }
+        wichSelected(0, 1);
     }//GEN-LAST:event_txt12MouseClicked
 
     private void txt11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt11MouseClicked
-        if (gameActive && game[0][0]==2) {
-            game[0][0] = activeGamer;
-            chargeView();
-            ifWin(0,0);
-            changeTurn();
-        }
+        wichSelected(0, 0);
     }//GEN-LAST:event_txt11MouseClicked
 
     private void txt23MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt23MouseClicked
-        if (gameActive && game[1][2]==2) {
-            game[1][2] = activeGamer;
-            chargeView();
-            ifWin(1,2);
-            changeTurn();
-        }
+        wichSelected(1, 2);
     }//GEN-LAST:event_txt23MouseClicked
 
     private void txt22MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt22MouseClicked
-        if (gameActive && game[1][1]==2) {
-            game[1][1] = activeGamer;
-            chargeView();
-            ifWin(1,1);
-            changeTurn();
-        }
+        wichSelected(1, 1);
     }//GEN-LAST:event_txt22MouseClicked
 
     private void txt21MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt21MouseClicked
-        if (gameActive && game[1][0]==2) {
-            game[1][0] = activeGamer;
-            chargeView();
-            ifWin(1,0);
-            changeTurn();
-        }
+        wichSelected(1, 0);
     }//GEN-LAST:event_txt21MouseClicked
 
     private void txt33MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt33MouseClicked
-        if (gameActive && game[2][2]==2) {
-            game[2][2] = activeGamer;
-            chargeView();
-            ifWin(2,2);
-            changeTurn();
-        }
+        wichSelected(2, 2);
     }//GEN-LAST:event_txt33MouseClicked
 
     private void txt32MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt32MouseClicked
-        if (gameActive && game[2][1]==2) {
-            game[2][1] = activeGamer;
-            chargeView();
-            ifWin(2,1);
-            changeTurn();
-        }
+        wichSelected(2, 1);
     }//GEN-LAST:event_txt32MouseClicked
 
     private void txt31MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt31MouseClicked
-        if (gameActive && game[2][0]==2) {
-            game[2][0] = activeGamer;
-            chargeView();
-            ifWin(2,0);
-            changeTurn();
-        }
+        wichSelected(2, 0);
     }//GEN-LAST:event_txt31MouseClicked
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        cleanGame();
+        chargeView();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * Change turn
@@ -404,6 +394,7 @@ public class WinGame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JTextField txt11;
     private javax.swing.JTextField txt12;
